@@ -7,13 +7,13 @@
 
 template <typename Type>
 class SingleLinkedList {
-    // Объявление шаблона класса "Итератор" для списка
-    // ValueType совпадает с Type для итератора
-    // ValueType будет <const Type> для константного итератора 
+    // РћР±СЉСЏРІР»РµРЅРёРµ С€Р°Р±Р»РѕРЅР° РєР»Р°СЃСЃР° "РС‚РµСЂР°С‚РѕСЂ" РґР»СЏ СЃРїРёСЃРєР°
+    // ValueType СЃРѕРІРїР°РґР°РµС‚ СЃ Type РґР»СЏ РёС‚РµСЂР°С‚РѕСЂР°
+    // ValueType Р±СѓРґРµС‚ <const Type> РґР»СЏ РєРѕРЅСЃС‚Р°РЅС‚РЅРѕРіРѕ РёС‚РµСЂР°С‚РѕСЂР°
     template<typename ValueType>
     class BasicIterator;
 
-    // Узел Списка
+    // РЈР·РµР» cРїРёСЃРєР°
     struct Node {
         Node() = default;
         Node(const Type& val, Node* next)
@@ -101,7 +101,7 @@ public:
     }
 
     bool IsEmpty() const noexcept {
-        return (!head_.next_node) ? true : false;
+        return size_ == 0;
     }
 
     Iterator begin() noexcept {
@@ -159,7 +159,7 @@ private:
     class BasicIterator {
         friend class SingleLinkedList;
 
-        // Конвертирующий конструктор итератора из указателя на узел списка
+        // РљРѕРЅРІРµСЂС‚РёСЂСѓСЋС‰РёР№ РєРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РёС‚РµСЂР°С‚РѕСЂР° РёР· СѓРєР°Р·Р°С‚РµР»СЏ РЅР° СѓР·РµР» СЃРїРёСЃРєР°
         explicit BasicIterator(Node* node) {
             node_ = node;
         }
@@ -200,8 +200,8 @@ private:
         }
 
         BasicIterator operator++(int) noexcept {
-            auto old_value(*this); // Сохраняем прежнее значение объекта для последующего возврата
-            ++(*this); // используем логику префиксной формы инкремента
+            auto old_value(*this); // РЎРѕС…СЂР°РЅСЏРµРј РїСЂРµР¶РЅРµРµ Р·РЅР°С‡РµРЅРёРµ РѕР±СЉРµРєС‚Р° РґР»СЏ РїРѕСЃР»РµРґСѓСЋС‰РµРіРѕ РІРѕР·РІСЂР°С‚Р°
+            ++(*this); // РёСЃРїРѕР»СЊР·СѓРµРј Р»РѕРіРёРєСѓ РїСЂРµС„РёРєСЃРЅРѕР№ С„РѕСЂРјС‹ РёРЅРєСЂРµРјРµРЅС‚Р°
             return old_value;
         }
 
